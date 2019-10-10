@@ -37,9 +37,9 @@ class Employee {
       this.email = email,
       this.age = age
 
-    this.makeWidget = function () {
-      return `${first_name} ${last_name} Widget`
-    }
+  }
+  makeWidget() {
+    return `${this.first_name} ${this.last_name} Widget`
   }
 }
 let cody = new Employee('Cody', 'Young', 'codyjamesyoung@gmail.com', 26)
@@ -122,17 +122,18 @@ class ProgressiveManager extends Manager {
   }
 
   hire() {
-    super.hire();
+    super.hire()
     if (this.reports.length >= 101) {
       this.title = "Bestest Manager"
     } else if (this.reports.length >= 51 && this.reports.length <= 100) {
-      this.title = "Manager PLus"
+      this.title = "Manager Plus"
     } else if (this.reports.length >= 11 && this.reports.length <= 50) {
       this.title = "Manager"
     } else if (this.reports.length >= 4 && this.reports.length <= 10) {
       this.title = "Mostly Manager"
-    } else
-      this.title = "Barley Manger"
+    } else if (this.reports.length >= 1 && this.reports.length <= 3) {
+      this.title = "Barely Manager"
+    }
   }
 
   fire() {
@@ -175,16 +176,16 @@ class Machine {
     this.needs_reboot = false
   }
 
-  makeWidgets(num){
+  makeWidgets(num) {
     this.widgets_made_count += num
-    this.wear_and_tear_count += Math.ceil(num/50)
+    this.wear_and_tear_count += Math.ceil(num / 50)
   }
-  fixMachine(){
+  fixMachine() {
     this.needs_reboot = true
   }
-  reboot(){
+  reboot() {
     return () => {
-      this.widgets_made_count -= 10
+      this.wear_and_tear_count -= 10
       this.needs_reboot = false
     }
   }
